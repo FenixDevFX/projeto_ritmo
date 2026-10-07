@@ -1,0 +1,179 @@
+        :root {
+            /* Fundo rosa extremamente claro, aconchegante e limpo */
+            --bg-page: #fff5f6; 
+            --primary: #ff8595;
+            --primary-hover: #ff6b7e;
+            --text-main: #2d1f21;
+            --text-muted: #7c696b;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 30px rgba(255, 133, 149, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fredoka', 'Quicksand', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            min-height: 100vh;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .app-container {
+            background: var(--card-bg);
+            border-radius: 32px;
+            width: 100%;
+            max-width: 420px;
+            padding: 50px 32px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            margin-bottom: 35px;
+        }
+
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .music-emoji {
+            font-size: 1.8rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        /* Área Central do Botão */
+        .search-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 35px;
+            height: 150px;
+        }
+
+        .mic-btn {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(255, 133, 149, 0.3);
+        }
+
+        .mic-btn:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        .mic-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mic-btn svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+        }
+
+        /* Ondas de Pulso Suaves em Tons de Rosa */
+        .pulse-ring {
+            position: absolute;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .recording .pulse-ring {
+            animation: softPulse 2.2s infinite ease-out;
+        }
+
+        .recording .pulse-ring:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        @keyframes softPulse {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+
+        .status-text {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            min-height: 24px;
+        }
+
+        /* Card de Resultado Amigável */
+        .result-card {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg-page);
+            border-radius: 20px;
+            display: none;
+            text-align: left;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.92) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .track-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .album-cover {
+            width: 64px;
+            height: 64px;
+            background: #ffdee2;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .track-details h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .track-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
